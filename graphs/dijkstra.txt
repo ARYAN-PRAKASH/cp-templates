@@ -1,0 +1,79 @@
+ll dis[N];
+bool vis[N];
+void dijkstra(int s){
+ 
+ 
+	for(int i=0;i<N;i++) {
+		dis[i] = INF;
+		vis[i] = 0;
+	}
+	
+ 
+	dis[s] = 0;
+ 
+	priority_queue<pair<ll,int>,vector<pair<ll,int>>,greater<pair<ll,int>>> q;
+	q.push(make_pair(0,s));
+	while(!q.empty()){
+	int v = q.top().second;
+	q.pop();
+ 	if(vis[v] == 1) continue;
+ 	vis[v] = 1;
+	for(auto p:adj[v]){
+ 		
+		int u = p.first;
+		ll w = p.second;
+ 		if(vis[u] == 1) continue;
+		if(dis[u] > dis[v] + w){
+			dis[u] = dis[v] + w; 
+			q.push(make_pair(dis[u],u));
+		}
+ 
+	}		
+ 
+}
+}
+ 
+
+
+// retrieve path from dijsktra (simple approach as bfs)
+
+
+ll dis[N];
+int path[N];
+bool vis[N];
+
+void dijkstra(int s){
+ 
+ 
+   for(int i=0;i<N;i++) {
+      dis[i] = INF;
+      path[i] = -1;
+      vis[i] = 0;
+   }
+   
+ 
+   dis[s] = 0;
+   path[s] = 0;
+   priority_queue<pair<ll,int>,vector<pair<ll,int>>,greater<pair<ll,int>>> q;
+   q.push(make_pair(0,s));
+   while(!q.empty()){
+   int v = q.top().second;
+   q.pop();
+   if(vis[v] == 1) continue;
+   vis[v] = 1;
+   for(auto p:adj[v]){
+      
+      int u = p.first;
+      ll w = p.second;
+      if(vis[u]) continue;
+      if(dis[u] > dis[v] + w){
+         dis[u] = dis[v] + w; 
+         q.push(make_pair(dis[u],u));
+         path[u] = v;
+      }
+ 
+   }     
+ 
+}
+}
+ 

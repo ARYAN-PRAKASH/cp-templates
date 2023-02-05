@@ -1,0 +1,15 @@
+const int N = 1e5;
+int height[N] = {0};
+int depth[N] = {0};
+
+void dfs(int i,map<int,vector<int>> & mp){
+
+for(auto k:mp[i]){
+
+depth[k] = depth[i] + 1;
+dfs(k,mp);
+
+height[i] = max(height[i],height[k] + 1);
+}
+
+}

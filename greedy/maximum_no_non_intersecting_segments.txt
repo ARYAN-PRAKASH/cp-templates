@@ -1,0 +1,25 @@
+
+// it needs the the pair of (ending event and starting event)
+int max_act_sel(vector<pair<int,int>>  acts)
+{
+
+    int sz = acts.size();
+    if(sz==0)
+    return 0;
+    sort(acts.begin(), acts.end());
+ 
+    int ans = 1;
+    int lst = acts[0].first;
+ 
+    for(int i=1;i<sz;i++)
+    {
+     if(acts[i].second>=lst)
+     {
+         ans++;
+         lst = acts[i].first;
+     }
+    }
+ 
+    return ans;
+ 
+}

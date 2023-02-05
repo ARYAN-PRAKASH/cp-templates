@@ -1,0 +1,12 @@
+ 
+int n, k;
+int cur[26];
+vector<int> path;
+
+void dfs(int v) {
+  while (cur[v] < k) {
+    int u = cur[v]++;
+    dfs(u);
+    path.push_back(u);
+  }
+}

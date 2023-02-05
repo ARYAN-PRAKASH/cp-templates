@@ -1,0 +1,13 @@
+
+long long gcd(ll int a, ll int b)
+{
+  if (b == 0)
+    return a;
+  return gcd(b, a % b);
+}
+ 
+long long lcm(ll a, ll b)
+{
+    return (a / gcd(a, b)) * b;
+}
+  

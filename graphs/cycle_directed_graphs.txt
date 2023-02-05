@@ -1,0 +1,16 @@
+
+bool dfs(int node ,vector<vector<int>> &adj , vector<bool> &visited, vector<bool> &dfsvis){
+    visited[node]=true;
+    dfsvis[node]=true;
+    for(auto neighbour :adj[node]){
+        if(!visited[neighbour]){
+            bool cycle=dfs(neighbour,adj,visited,dfsvis);
+            if(cycle)
+                return true;
+        }
+        else if(visited[neighbour] && dfsvis[neighbour])
+            return true;
+    }
+    dfsvis[node]=false;
+    return false;
+}
